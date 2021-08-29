@@ -13,6 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* rem is root element. Equal to the size of property's
+    initial value. Typically 1rem = 16px. */
     font-size: 1.2rem;
     position: sticky;
     top: 0;
@@ -40,7 +42,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    /* Need to play around with this here. 
+    /* Need to play around with this here.
     Doesnt display properly on mac if display: flex; */
     line-height: 80px;
     /* display: flex; */
@@ -102,3 +104,92 @@
     transition: all 0.3s ease;
 }
 
+/* 960px as a break point. */
+@media screen and (max-width: 960px) {
+  .navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+  }
+
+  .navbar__menu {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    /* -1000px creates the drop down effect on smaller screens. */
+    /* In order for top position has to be absolute. */
+    /* Comment line 129 and uncomment line 133 if mobile
+    is not coded in. */
+    top: -1000px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: -1;
+    /* background: #131313; */
+  }
+  /* When menu bar is triggered. Mostly for Mobile Screens. */
+  .navbar__menu.active {
+    background: #131313;
+    top: 100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 99;
+    /* vh is equal to % of view in height. Here = 60% of view. */
+    height: 60vh;
+    font-size: 1.6rem;
+  }
+
+  #navbar__logo {
+    padding-left: 25px;
+  }
+
+  .navbar__toggle.bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: 0.3s ease-in-out;
+    background: #fff;
+  }
+
+  .navbar__item {
+    width: 100%;
+  }
+
+  .navbar__links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .navbar__btn {
+    padding-bottom: 2rem;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80px;
+    margin: 0;
+  }
+  /* Uncomment line 129 (top) and comment line 133 (background)
+  for mobile menu to function correctly. */
+  #mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+
+  .navbar__toggle .bar {
+    display: block;
+    cursor: pointer;
+  }
+}
