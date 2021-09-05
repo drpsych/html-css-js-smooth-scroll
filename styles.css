@@ -1,13 +1,12 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Kumbh Sans', sans-serif;
     scroll-behavior: smooth;
-}
-
-.navbar {
+  }
+  
+  .navbar {
     background: #131313;
     height: 80px;
     display: flex;
@@ -19,9 +18,9 @@
     position: sticky;
     top: 0;
     z-index: 999;
-}
-
-.navbar__container {
+  }
+  
+  .navbar__container {
     display: flex;
     justify-content: space-between;
     height: 80px;
@@ -31,13 +30,12 @@
     /* top right bottom left or top and bottom left and right */
     margin: 0 auto;
     padding: 0 50px;
-    }
-
-#navbar__logo {
+  }
+  
+  #navbar__logo {
     background-color: #ff8177;
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
     background-size: 100%;
-    background-clip: border-box;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -50,19 +48,19 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
-}
-
-.navbar__menu {
+  }
+  
+  .navbar__menu {
     display: flex;
     align-items: center;
     list-style: none;
-}
-
-.navbar__item {
+  }
+  
+  .navbar__item {
     height: 80px;
-}
-
-.navbar__links {
+  }
+  
+  .navbar__links {
     color: #fff;
     display: flex;
     align-items: center;
@@ -71,17 +69,17 @@
     text-decoration: none;
     height: 100%;
     transition: all 0.3s ease;
-}
-
-.navbar__btn {
+  }
+  
+  .navbar__btn {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
     width: 100%;
-}
-
-.button {
+  }
+  
+  .button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,99 +95,107 @@
     background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
     color: #fff;
     transition: all 0.3s ease;
-}
-
-.navbar__links:hover {
+  }
+  
+  .navbar__links:hover {
     color: #9518fc;
     transition: all 0.3s ease;
-}
-
-/* 960px as a break point. */
-@media screen and (max-width: 960px) {
-  .navbar__container {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    padding: 0;
   }
-
-  .navbar__menu {
-    display: grid;
-    grid-template-columns: auto;
-    margin: 0;
-    width: 100%;
-    position: absolute;
-    /* -1000px creates the drop down effect on smaller screens. */
-    /* In order for top position has to be absolute. */
-    /* Comment line 129 and uncomment line 133 if mobile
-    is not coded in. */
-    top: -1000px;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: -1;
-    /* background: #131313; */
+  
+  /* 960px as a break point. */
+  @media screen and (max-width: 960px) {
+    .navbar__container {
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+      z-index: 1;
+      width: 100%;
+      max-width: 1300px;
+      padding: 0;
+    }
+  
+    .navbar__menu {
+      display: grid;
+      grid-template-columns: auto;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: -1000px;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: -1;
+    }
+    /* When menu bar is triggered. Mostly for Mobile Screens. */
+    .navbar__menu.active {
+      background: #131313;
+      top: 100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 99;
+      /* vh is equal to % of view in height. Here = 60% of view. */
+      height: 60vh;
+      font-size: 1.6rem;
+    }
+  
+    #navbar__logo {
+      padding-left: 25px;
+    }
+  
+    .navbar__toggle .bar {
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+      background: #fff;
+    }
+  
+    .navbar__item {
+      width: 100%;
+    }
+  
+    .navbar__links {
+      text-align: center;
+      padding: 2rem;
+      width: 100%;
+      display: table;
+    }
+  
+    .navbar__btn {
+      padding-bottom: 2rem;
+    }
+  
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      height: 80px;
+      margin: 0;
+    }
+  
+    #mobile-menu {
+      position: absolute;
+      top: 20%;
+      right: 5%;
+      transform: translate(5%, 20%);
+    }
+  
+    .navbar__toggle .bar {
+      display: block;
+      cursor: pointer;
+    }
+    
+    /* styles the hamberger menu on mobile */
+    /* Adding active class, <span class="bar"></span> are nth-child(#). */
+    #mobile-menu.is-active .bar:nth-child(2) {
+      opacity: 0;
+    }
+  
+    #mobile-menu.is-active .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+  
+    #mobile-menu.is-active .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   }
-  /* When menu bar is triggered. Mostly for Mobile Screens. */
-  .navbar__menu.active {
-    background: #131313;
-    top: 100%;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 99;
-    /* vh is equal to % of view in height. Here = 60% of view. */
-    height: 60vh;
-    font-size: 1.6rem;
-  }
-
-  #navbar__logo {
-    padding-left: 25px;
-  }
-
-  .navbar__toggle.bar {
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: 0.3s ease-in-out;
-    background: #fff;
-  }
-
-  .navbar__item {
-    width: 100%;
-  }
-
-  .navbar__links {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-
-  .navbar__btn {
-    padding-bottom: 2rem;
-  }
-
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 80px;
-    margin: 0;
-  }
-  /* Uncomment line 129 (top) and comment line 133 (background)
-  for mobile menu to function correctly. */
-  #mobile-menu {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    transform: translate(5%, 20%);
-  }
-
-  .navbar__toggle .bar {
-    display: block;
-    cursor: pointer;
-  }
-}
